@@ -17,22 +17,27 @@ main {
 }
 
 .input-form {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-    border: 1px solid skyblue;
-background-color:#1F1F3C;
-color:#EAEAF4;
+  border: 1px solid #1F1F3C;
+  background-color:#1F1F3C;
+  color:#EAEAF4;
+  text-align: center;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1mm;
 }
 
 header {
+  width: 300px;
   padding-bottom: 65%;
-    background-color: #1F1F3C;
+  background-color: #1F1F3C;
 }
 
 .top-box {
@@ -62,6 +67,6 @@ header {
 
 }
 
-* {
+/* * {
     border: 1px solid red;
-}
+} */
