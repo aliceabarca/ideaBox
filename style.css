@@ -1,0 +1,51 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    border: 1px solid blue;
+    display: flex;
+    color: #1F1F3C;
+    background-color:#EAEAF4 ; 
+}
+
+main {
+    background-color:#A8AAD2 ;
+}
+
+.input-form {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+h1 {
+    border: 1px solid skyblue;
+background-color:#1F1F3C;
+color:#EAEAF4;
+}
+
+header {
+    background-color: #1F1F3C;
+}
+
+.top-box {
+    background-color: #A8AAD2;
+}
+
+.input-1, .input-2 {
+
+}
+.input-2 {
+
+}
+
+.save-button{
+
+}
+
+* {
+    border: 1px solid red;
+}
