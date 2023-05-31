@@ -10,7 +10,10 @@ body {
 }
 
 main {
-    background-color:#A8AAD2 ;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* background-color:#A8AAD2 ; */
 }
 
 .input-form {
@@ -28,11 +31,24 @@ color:#EAEAF4;
 }
 
 header {
+  padding-bottom: 65%;
     background-color: #1F1F3C;
 }
 
 .top-box {
-    background-color: #A8AAD2;
+  width: 500%;
+  height: 35%;
+  padding-right: 50%;
+  padding-left: 50%;
+  background-color: #A8AAD2;
+}
+
+.bottom-box {
+  width: 500%;
+  height: 35%;
+  padding-right: 50%;
+  padding-left: 50%;
+  background-color:aliceblue;
 }
 
 .input-1, .input-2 {
