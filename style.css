@@ -4,9 +4,15 @@
 
 body {
     border: 1px solid blue;
+    border-left: 20px solid black;
+    border-right: 20px solid black;
     display: flex;
     color: #1F1F3C;
-    background-color:#EAEAF4 ; 
+    background-color:#EAEAF4;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0; 
 }
 
 main {
@@ -17,35 +23,42 @@ main {
 }
 
 .input-form {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  height: 100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 h1 {
-    border: 1px solid skyblue;
-background-color:#1F1F3C;
-color:#EAEAF4;
+  border: 1px solid #1F1F3C;
+  background-color:#1F1F3C;
+  color:#EAEAF4;
+  text-align: center;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1mm;
 }
 
 header {
-  padding-bottom: 65%;
-    background-color: #1F1F3C;
+  width: 25%;
+  padding-bottom: 40%;
+  background-color: #1F1F3C;
 }
 
 .top-box {
-  width: 500%;
-  height: 35%;
+  width: 525px;
+  height: 50%;
   padding-right: 50%;
   padding-left: 50%;
   background-color: #A8AAD2;
 }
 
 .bottom-box {
-  width: 500%;
-  height: 35%;
+  width: 525px;
+  height: 50%;
   padding-right: 50%;
   padding-left: 50%;
   background-color:aliceblue;
@@ -62,6 +75,6 @@ header {
 
 }
 
-* {
+/* * {
     border: 1px solid red;
-}
+} */
