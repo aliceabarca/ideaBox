@@ -3,9 +3,9 @@
 }
 
 body {
-    border: 1px solid blue;
+    /* border: 1px solid blue;
     border-left: 20px solid black;
-    border-right: 20px solid black;
+    border-right: 20px solid black; */
     display: flex;
     color: #1F1F3C;
     background-color:#EAEAF4;
@@ -41,40 +41,97 @@ h1 {
   display: flex;
   justify-content: center;
   letter-spacing: 1mm;
+  font-weight: lighter;
 }
 
 header {
   width: 25%;
-  padding-bottom: 40%;
+  padding-bottom: 41%;
   background-color: #1F1F3C;
 }
 
 .top-box {
-  width: 525px;
+  width: 1100px;
   height: 50%;
-  padding-right: 50%;
-  padding-left: 50%;
+  /* padding-right: 50%;
+  padding-left: 50%; */
   background-color: #A8AAD2;
 }
 
 .bottom-box {
-  width: 525px;
+  width: 1100px;
   height: 50%;
-  padding-right: 50%;
-  padding-left: 50%;
+  /* padding-right: 50%;
+  padding-left: 50%; */
   background-color:aliceblue;
 }
 
-.input-1, .input-2 {
-
-}
+.input-1,
 .input-2 {
-
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  font-size: 35px;
+  padding-left: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
 }
 
-.save-button{
-
+#input-1 {
+  width: 75%;
+  height: 55px;
+  font-size: 25px;
+  margin-left: 15px;
+  border: 5px solid #1f1f3c;
 }
+
+#input-2 {
+  width: 75%;
+  height: 100px;
+  font-size: 25px;
+  margin-left: 15px;
+  border: 5px solid #1f1f3c;
+}
+.save-button {
+  background-color: #1F1F3C;
+  color: white;
+}
+
+
+#input-1, 
+#input-2 {
+  
+  /* width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0; */
+  /* box-sizing: border-box; */
+  /* padding: 14px 165px;
+  margin: 8px 0;
+  box-sizing: border-box; */
+}
+/* .input-2 {
+  /* box-sizing: border-box;
+  width: 75%; */
+  
+  
+  /* .save-button{ */ */
+    
+    
+    .hidden {
+      display: none;
+    }
+    .disabled:hover {
+      background-color: #d3d3d3;
+      cursor: not-allowed;
+      transition-duration: 0.7s;
+    }
+/* 
+puts this on the label    
+box-sizing: border-box;
+width: 75%; */
+
 
 /* * {
     border: 1px solid red;
