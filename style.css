@@ -3,9 +3,9 @@
 }
 
 body {
-    border: 1px solid blue;
+    /* border: 1px solid blue;
     border-left: 20px solid black;
-    border-right: 20px solid black;
+    border-right: 20px solid black; */
     display: flex;
     color: #1F1F3C;
     background-color:#EAEAF4;
@@ -50,7 +50,7 @@ header {
 }
 
 .top-box {
-  width: 525px;
+  width: 540px;
   height: 50%;
   padding-right: 50%;
   padding-left: 50%;
@@ -58,7 +58,7 @@ header {
 }
 
 .bottom-box {
-  width: 525px;
+  width: 540px;
   height: 50%;
   padding-right: 50%;
   padding-left: 50%;
