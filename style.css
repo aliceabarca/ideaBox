@@ -50,23 +50,26 @@ header {
 }
 
 .top-box {
-  width: 540px;
+  width: 1100px;
   height: 50%;
-  padding-right: 50%;
-  padding-left: 50%;
+  /* padding-right: 50%;
+  padding-left: 50%; */
   background-color: #A8AAD2;
 }
 
 .bottom-box {
-  width: 540px;
+  width: 1100px;
   height: 50%;
-  padding-right: 50%;
-  padding-left: 50%;
+  /* padding-right: 50%;
+  padding-left: 50%; */
   background-color:aliceblue;
 }
 
-.input-1, .input-2 {
-
+#input-1, 
+#input-2 {
+  padding: 14px 165px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 .input-2 {
 
