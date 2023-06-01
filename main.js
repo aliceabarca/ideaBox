@@ -13,6 +13,8 @@ saveButton.addEventListener('click', function(event) {
   createIdeaObject(titleInput.value, bodyInput.value)
 }
 );
+titleInput.addEventListener('input', emptyInputs);
+bodyInput.addEventListener('input', emptyInputs);
 
 // global variables:
 var currentIdea;
@@ -51,5 +53,15 @@ bottomBox.innerHTML += `
 titleInput.value = ''
 bodyInput.value = ''
 return currentIdea
+}
+
+function emptyInputs() {
+  if (titleInput.value !== '' && bodyInput.value !== '') {
+    saveButton.disabled = false;
+    saveButton.classList.add('disabled');
+  } else {
+    saveButton.disabled = true;
+    saveButton.classList.remove('disabled');
+  }
 }
 //create assests folder//////
