@@ -99,18 +99,14 @@ header {
   color: white;
 }
 
-.disabled {
-  background-color: #d3d3d3;
-  cursor: default;
-}
 
 #input-1, 
 #input-2 {
   
-    /* width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0; */
-    /* box-sizing: border-box; */
+  /* width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0; */
+  /* box-sizing: border-box; */
   /* padding: 14px 165px;
   margin: 8px 0;
   box-sizing: border-box; */
@@ -118,14 +114,19 @@ header {
 /* .input-2 {
   /* box-sizing: border-box;
   width: 75%; */
-
-
-/* .save-button{ */ */
-
-
-.hidden {
-  display: none;
-}
+  
+  
+  /* .save-button{ */ */
+    
+    
+    .hidden {
+      display: none;
+    }
+    .disabled:hover {
+      background-color: #d3d3d3;
+      cursor: not-allowed;
+      transition-duration: 0.7s;
+    }
 /* 
 puts this on the label    
 box-sizing: border-box;

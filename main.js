@@ -5,6 +5,7 @@ var titleInput = document.querySelector('#input-1');
 var bodyInput = document.querySelector('#input-2');
 var bottomBox = document.querySelector('.bottom-box');
 var topBox = document.querySelector('.top-box');
+var inputForm = document.querySelector('.input-form');
 
 // event listener:
 
@@ -13,8 +14,10 @@ saveButton.addEventListener('click', function(event) {
   createIdeaObject(titleInput.value, bodyInput.value)
 }
 );
-titleInput.addEventListener('input', emptyInputs);
+
 bodyInput.addEventListener('input', emptyInputs);
+titleInput.addEventListener('input', emptyInputs)
+inputForm.addEventListener('submit', emptyInputs)
 
 // global variables:
 var currentIdea;
@@ -46,22 +49,26 @@ bottomBox.innerHTML += `
   <strong>${bodyInput.value}</strong>
 </p>
 //<div class ="card-footer">/////
-//<img class="+" src="assets/comment.svg" alt="plus sign">////
+//<img class="" src="" alt="">////
 //<div class="comment">Comment</div>////
 </div>
 `
 titleInput.value = ''
 bodyInput.value = ''
+emptyInputs()
 return currentIdea
 }
 
 function emptyInputs() {
-  if (titleInput.value !== '' && bodyInput.value !== '') {
-    saveButton.disabled = false;
-    saveButton.classList.add('disabled');
-  } else {
-    saveButton.disabled = true;
-    saveButton.classList.remove('disabled');
-  }
+    if (titleInput.value !== '' && bodyInput.value !== '') {
+      saveButton.disabled = false;
+      saveButton.classList.remove('disabled');
+    } else {
+      saveButton.disabled = true;
+      saveButton.classList.add('disabled');
+    }
 }
+
+
+
 //create assests folder//////
