@@ -84,20 +84,18 @@ function emptyInputs() {
     }
 }
 
-
 function deleteIdea(event) {
-  console.log(event.target)
-  if (event.target.classList.contains('idea-cards')) {
-    event.target.classList
-  }
-  for (i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === parseInt(event.target.id)) {
+  var ideaId = parseInt(event.target.id)
+  for (var i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].id === ideaId) {
       ideaBoxArray.splice(i, 1)
+      return
     }
   }
+
+  var card = event.target.closest('.idea-cards')
+  card.remove()
 }
 
 
 
-
-//create assests folder//////
