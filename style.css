@@ -107,6 +107,10 @@ header {
 .save-button {
   background-color: #1F1F3C;
   color: white;
+  width: 70%;
+  height: 56px;
+  margin-left: 75px;
+  
 }
 
 .card-header {
