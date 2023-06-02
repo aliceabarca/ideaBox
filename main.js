@@ -72,7 +72,7 @@ bodyInput.value = ''
 emptyInputs()
   return currentIdea
 }
-// saveButton.disabled = true;
+saveButton.disabled = true;
 function emptyInputs() {
     if (titleInput.value !== '' && bodyInput.value !== '') {
       saveButton.disabled = false;
@@ -86,7 +86,9 @@ function emptyInputs() {
 
 function deleteIdea(event) {
   console.log(event.target)
-  if (event.target.classList.contains('idea-cards'))
+  if (event.target.classList.contains('idea-cards')) {
+    event.target.classList
+  }
   for (i = 0; i < ideaBoxArray.length; i++) {
     if (ideaBoxArray[i].id === parseInt(event.target.id)) {
       ideaBoxArray.splice(i, 1)
