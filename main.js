@@ -72,6 +72,7 @@ bodyInput.value = ''
 emptyInputs()
   return currentIdea
 }
+
 saveButton.disabled = true;
 function emptyInputs() {
     if (titleInput.value !== '' && bodyInput.value !== '') {
