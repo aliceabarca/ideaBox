@@ -86,7 +86,9 @@ function emptyInputs() {
 function deleteIdea(event) {
   console.log(event.target)
   for (i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id == event.target.parentNode.id) {}
+    if (ideaBoxArray[i].id === parseInt(event.target.id)) {
+      ideaBoxArray.splice(i, 1)
+    }
   }
 }
 
