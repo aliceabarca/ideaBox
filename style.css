@@ -89,6 +89,14 @@ header {
   align-items: center;
 }
 
+.save-button {
+  background-color: #1F1F3C;
+  color: white;
+  width: 70%;
+  height: 56px;
+  margin-left: 75px;
+  
+}
 #input-1 {
   width: 75%;
   height: 55px;
@@ -103,14 +111,6 @@ header {
   font-size: 25px;
   margin-left: 15px;
   border: 5px solid #1f1f3c;
-}
-.save-button {
-  background-color: #1F1F3C;
-  color: white;
-  width: 70%;
-  height: 56px;
-  margin-left: 75px;
-  
 }
 
 .card-header {
@@ -173,14 +173,14 @@ img {
   background-color: black;
 }
     
-    .hidden {
-      display: none;
-    }
-    .disabled:hover {
-      background-color: #d3d3d3;
-      cursor: not-allowed;
-      transition-duration: 0.7s;
-    }
+.hidden {
+  display: none;
+}
+.disabled:hover {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+  transition-duration: 0.7s;
+}
 /* 
 puts this on the label    
 box-sizing: border-box;
