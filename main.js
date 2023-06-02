@@ -46,11 +46,11 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class='idea-cards'>
   <div class='card-header-main'>
   <header class='card-header'>
-  <button type='favorite'>
-  <img class="favorite-on" src="assets/star-active.svg" alt="favorite on">
-  <img class="favorite-off hidden" src="./assets/star.svg" alt="favorite off">
+  <button class='header-buttons'>
+  <img class="favorite-on hidden" src="assets/star-active.svg" alt="favorite on">
+  <img class="favorite-off" src="./assets/star.svg" alt="favorite off">
   </button>
-  <button type='delete'>
+  <button class='header-buttons'>
   <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on">
   </button>
   </header>
