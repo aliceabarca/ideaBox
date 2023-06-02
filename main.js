@@ -14,6 +14,7 @@ var deleteButton = document.querySelector('.delete-button')
 saveButton.addEventListener('click', function(event) {
   event.preventDefault();
   createIdeaObject(titleInput.value, bodyInput.value)
+  displayIdeaCard()
   emptyInputs()
 }
 );
@@ -23,6 +24,7 @@ bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
 
 bottomBox.addEventListener('click', deleteIdea)
+
 
 // global variables:
 var currentIdea;
@@ -41,6 +43,9 @@ function captureIdea(title, body) {
 function createIdeaObject(title, body) {
 currentIdea = captureIdea(title, body)
 ideaBoxArray.push(currentIdea)
+}
+
+function displayIdeaCard() {
 cardContainer.innerHTML = ''
 for (var i = 0; i < ideaBoxArray.length; i++) {
   cardContainer.innerHTML += `
@@ -67,9 +72,9 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   </div>
   `
 }
-titleInput.value = ''
-bodyInput.value = ''
-emptyInputs()
+  titleInput.value = ''
+  bodyInput.value = ''
+  emptyInputs()
   return currentIdea
 }
 
@@ -85,17 +90,11 @@ function emptyInputs() {
 }
 
 function deleteIdea(event) {
-  var ideaId = parseInt(event.target.id)
-  for (var i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === ideaId) {
+  console.log(event.target)
+  for (i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].id === parseInt(event.target.id)) {
       ideaBoxArray.splice(i, 1)
-      return
     }
   }
-  var card = event.target.closest('.idea-cards')
-  card.remove()
-  //issue with line 96???
+  displayIdeaCard()
 }
-
-
-
