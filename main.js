@@ -14,6 +14,7 @@ var deleteButton = document.querySelector('.delete-button')
 saveButton.addEventListener('click', function(event) {
   event.preventDefault();
   createIdeaObject(titleInput.value, bodyInput.value)
+  emptyInputs()
 }
 );
 
@@ -66,12 +67,12 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   </div>
   `
 }
-  titleInput.value = ''
-  bodyInput.value = ''
-  emptyInputs()
+titleInput.value = ''
+bodyInput.value = ''
+emptyInputs()
   return currentIdea
 }
-
+// saveButton.disabled = true;
 function emptyInputs() {
     if (titleInput.value !== '' && bodyInput.value !== '') {
       saveButton.disabled = false;
@@ -85,6 +86,7 @@ function emptyInputs() {
 
 function deleteIdea(event) {
   console.log(event.target)
+  if (event.target.classList.contains('idea-cards'))
   for (i = 0; i < ideaBoxArray.length; i++) {
     if (ideaBoxArray[i].id === parseInt(event.target.id)) {
       ideaBoxArray.splice(i, 1)
