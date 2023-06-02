@@ -3,7 +3,7 @@
 var saveButton = document.querySelector('.save-button');
 var titleInput = document.querySelector('#input-1');
 var bodyInput = document.querySelector('#input-2');
-var bottomBox = document.querySelector('.bottom-box');
+var cardContainer = document.querySelector('.card-container');
 var topBox = document.querySelector('.top-box');
 var inputForm = document.querySelector('.input-form');
 
@@ -36,21 +36,20 @@ function captureIdea(title, body) {
 function createIdeaObject(title, body) {
 currentIdea = captureIdea(title, body)
 ideaBoxArray.push(currentIdea)
-bottomBox.innerHTML += `
+cardContainer.innerHTML += `
 <div class='idea-cards'>
-<p class='card-header'>
-<button class='favoriteCardButton'></button> <br>
-<button class="deleteIdeaButton"></button> <br>
-</p>
-<p class="card-title" >
+<div class='card-header'>
+<button class='favoriteCardButton'> favorite ideas </button> <br>
+<button class="deleteIdeaButton"> delete button</button> <br>
+</div>
+<div class="card-title" >
   <strong>${titleInput.value}</strong>
-</p>
-<p class="card-body">
+</div>
+<div class="card-body">
   <strong>${bodyInput.value}</strong>
-</p>
-//<div class ="card-footer">/////
-//<img class="" src="" alt="">////
-//<div class="comment">Comment</div>////
+</div>
+<div class ="card-footer">
+<img class="" src="" alt="">
 </div>
 `
 titleInput.value = ''
@@ -68,6 +67,14 @@ function emptyInputs() {
       saveButton.classList.add('disabled');
     }
 }
+
+
+function deleteIdea(event) {
+  for (i = 0; i < ideas.length; i++) {
+      if (ideas[i].id == event.target.parentNode.id) {}
+  }
+}
+
 
 
 
