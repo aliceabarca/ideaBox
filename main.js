@@ -38,18 +38,25 @@ currentIdea = captureIdea(title, body)
 ideaBoxArray.push(currentIdea)
 cardContainer.innerHTML += `
 <div class='idea-cards'>
-<div class='card-header'>
-<button class='favoriteCardButton'> favorite ideas </button> <br>
-<button class="deleteIdeaButton"> delete button</button> <br>
-</div>
-<div class="card-title" >
-  <strong>${titleInput.value}</strong>
-</div>
-<div class="card-body">
-  <strong>${bodyInput.value}</strong>
-</div>
-<div class ="card-footer">
-<img class="" src="" alt="">
+  <div class='card-header-main'>
+    <header class='card-header'>
+      <button type='favorite'>
+        <img class="favorite-on" src="assets/star-active.svg" alt="favorite on">
+        <img class="favorite-off hidden" src="./assets/star.svg" alt="favorite off">
+      </button>
+      <button type='delete'>
+      <img class="delete-button" src="./assets/delete.svg" alt="favorite on">
+       </button>
+    </header>
+  </div>
+  <div class='card-body'>
+    <div class="card-title">
+      <strong>${titleInput.value}</strong>
+    </div>
+    <div class="card-body">
+      <strong>${bodyInput.value}</strong>
+    </div>
+  </div>  
 </div>
 `
 titleInput.value = ''
