@@ -5,7 +5,9 @@ var titleInput = document.querySelector('#input-1');
 var bodyInput = document.querySelector('#input-2');
 var cardContainer = document.querySelector('.card-container');
 var topBox = document.querySelector('.top-box');
+var bottomBox = document.querySelector('.bottom-box')
 var inputForm = document.querySelector('.input-form');
+var deleteButton = document.querySelector('.delete-button')
 
 // event listener:
 
@@ -15,9 +17,11 @@ saveButton.addEventListener('click', function(event) {
 }
 );
 
-bodyInput.addEventListener('input', emptyInputs);
 titleInput.addEventListener('input', emptyInputs)
+bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
+
+bottomBox.addEventListener('click', deleteIdea)
 
 // global variables:
 var currentIdea;
@@ -36,33 +40,36 @@ function captureIdea(title, body) {
 function createIdeaObject(title, body) {
 currentIdea = captureIdea(title, body)
 ideaBoxArray.push(currentIdea)
-cardContainer.innerHTML += `
-<div class='idea-cards'>
+cardContainer.innerHTML = ''
+for (var i = 0; i < ideaBoxArray.length; i++) {
+  cardContainer.innerHTML += `
+  <div class='idea-cards'>
   <div class='card-header-main'>
-    <header class='card-header'>
-      <button type='favorite'>
-        <img class="favorite-on" src="assets/star-active.svg" alt="favorite on">
-        <img class="favorite-off hidden" src="./assets/star.svg" alt="favorite off">
-      </button>
-      <button type='delete'>
-      <img class="delete-button" src="./assets/delete.svg" alt="favorite on">
-       </button>
-    </header>
+  <header class='card-header'>
+  <button type='favorite'>
+  <img class="favorite-on" src="assets/star-active.svg" alt="favorite on">
+  <img class="favorite-off hidden" src="./assets/star.svg" alt="favorite off">
+  </button>
+  <button type='delete'>
+  <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on">
+  </button>
+  </header>
   </div>
   <div class='card-body'>
-    <div class="card-title">
-      <strong>${titleInput.value}</strong>
-    </div>
-    <div class="card-body">
-      <strong>${bodyInput.value}</strong>
-    </div>
+  <div class="card-title">
+  <strong>${ideaBoxArray[i].title}</strong>
+  </div>
+  <div class="card-body">
+  <strong>${ideaBoxArray[i].body}</strong>
+  </div>
   </div>  
-</div>
-`
-titleInput.value = ''
-bodyInput.value = ''
-emptyInputs()
-return currentIdea
+  </div>
+  `
+}
+  titleInput.value = ''
+  bodyInput.value = ''
+  emptyInputs()
+  return currentIdea
 }
 
 function emptyInputs() {
@@ -77,8 +84,9 @@ function emptyInputs() {
 
 
 function deleteIdea(event) {
-  for (i = 0; i < ideas.length; i++) {
-      if (ideas[i].id == event.target.parentNode.id) {}
+  console.log(event.target)
+  for (i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].id == event.target.parentNode.id) {}
   }
 }
 

@@ -118,7 +118,7 @@ header {
 .favorite-off,
 .delete-button {
 width: 50px;
-background-color: transparent
+background-color: #1F1F3C;
 /* height: 100px; */
 }
 
@@ -152,7 +152,9 @@ background-color: transparent
   
   
   /* .save-button{ */ */
-    
+img {
+  background-color: black;
+}
     
     .hidden {
       display: none;
