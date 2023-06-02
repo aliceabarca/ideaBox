@@ -141,10 +141,31 @@ background-color: #1F1F3C;
   /* align-items: center; */
 }
 
-.card-body {
-  border: 1px solid black;
-  height: 50%;
-  width: 50px;
+.card-body
+.card-body-div {
+  /* border: 1px solid black; */
+  width: 100%;
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column; */
+}
+
+.card-title {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: lighter;
+  padding-top: 20px;
+}
+
+.card-body-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 210px;
+  padding-top: 20px;
+  /* border: 2px #1f1f3c solid; */
 }
 
 .header-buttons {

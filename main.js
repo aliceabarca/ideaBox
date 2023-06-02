@@ -60,7 +60,7 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class="card-title">
   <strong>${ideaBoxArray[i].title}</strong>
   </div>
-  <div class="card-body">
+  <div class="card-body-div">
   <strong>${ideaBoxArray[i].body}</strong>
   </div>
   </div>  
@@ -92,9 +92,9 @@ function deleteIdea(event) {
       return
     }
   }
-
   var card = event.target.closest('.idea-cards')
   card.remove()
+  //issue with line 96???
 }
 
 
