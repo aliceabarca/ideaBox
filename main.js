@@ -99,7 +99,7 @@ function emptyInputs() {
 /*
   When I click on either 'star' or 'delete' img tag deleteIdea and saveIdea both log the event.
   How can you leverage the data-type so you only log it's respective function?
-    - If I click on the 'start' img only 'saveIdea' should log
+    - If I click on the 'star' img only 'saveIdea' should log
     - If I click on the 'delete' img only 'deleteIdea' should log
 */
 function deleteIdea(event) {
