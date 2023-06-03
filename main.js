@@ -52,12 +52,16 @@ ideaBoxArray.push(currentIdea)
 function displayIdeaCard() {
 cardContainer.innerHTML = ''
 for (var i = 0; i < ideaBoxArray.length; i++) {
+  /*
+    Indent all this HTML so it's easier to read
+    Also, you don't need two img tags for the favorite star use JS to replace the img src
+  */
   cardContainer.innerHTML += `
   <div class='idea-cards'>
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
-  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
+  <img class="favorite-star off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
   <button class='header-buttonss'>
   <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
@@ -92,6 +96,12 @@ function emptyInputs() {
     }
 }
 
+/*
+  When I click on either 'star' or 'delete' img tag deleteIdea and saveIdea both log the event.
+  How can you leverage the data-type so you only log it's respective function?
+    - If I click on the 'start' img only 'saveIdea' should log
+    - If I click on the 'delete' img only 'deleteIdea' should log
+*/
 function deleteIdea(event) {
   console.log(event.target)
   for (i = 0; i < ideaBoxArray.length; i++) {
@@ -119,3 +129,23 @@ function saveIdea(event) {
 //     if (ideaBoxArray[i].id) =
 //   }
 // }
+
+/*
+  Main Suggestion:
+  For favoriting a card/star, have a function that 'handlesFavoriting'
+    - When favoriting
+      - if your class name is 'favorite-star' and 'off'
+        - update the image src to the active star
+        - set the class name to 'on'
+        - invoke a function that will 'saveIdea' to your 'savedIdeasArray'
+          - will need to pass the idea id to this function
+      - if your class name is 'favorite-star' and 'on'
+        - update the image src to the regular star
+        - set the class name to 'off'
+        - invoke a function that will 'removeIdea' from 'savedIdeasArray'
+          - will need to pass the idea id to this function
+
+    - HINT: Look at how you're setting the id on the delete img tag to pass your 'save/removeIdea' function
+
+    These are suggestions - you peeps know your code best ^.^
+*/
