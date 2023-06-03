@@ -39,7 +39,8 @@ function captureIdea(title, body) {
   return {
     title: title,
     body: body,
-    id: Date.now()
+    id: Date.now(),
+    isFavorite: "hidden"
   }
 }
 
@@ -102,10 +103,20 @@ function deleteIdea(event) {
   displayIdeaCard()  
 }
 
+// need a way to know which one we are adding
+// bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
 function saveIdea(event) {
-    if ('favorite-button' === event.target.dataset.type) {
-      savedIdeasArray.push(ideaBoxArray)
-    } savedIdeasArray
-    displayIdeaCard()
-    }
+   currentIdea = cardContainer
+  console.log(event.target)
+  if ('favorite-button' === event.target.dataset.type) {  
+    savedIdeasArray.push(ideaBoxArray)
+  } 
+}
 
+
+
+// function saveIdeatwo() {
+//   for (var i =0; i < ideaBoxArray.length; i++) {
+//     if (ideaBoxArray[i].id) = 
+//   }
+// }
