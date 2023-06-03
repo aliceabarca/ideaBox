@@ -7,7 +7,7 @@ var cardContainer = document.querySelector('.card-container');
 var topBox = document.querySelector('.top-box');
 var bottomBox = document.querySelector('.bottom-box')
 var inputForm = document.querySelector('.input-form');
-var deleteButton = document.querySelector('.delete-button')
+
 
 // event listener:
 
@@ -22,13 +22,16 @@ saveButton.addEventListener('click', function(event) {
 titleInput.addEventListener('input', emptyInputs)
 bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
-
 bottomBox.addEventListener('click', deleteIdea)
+bottomBox.addEventListener('click', saveIdea)
+
+
 
 
 // global variables:
-var currentIdea;
-var ideaBoxArray = [];
+var currentIdea
+var ideaBoxArray = []
+var savedIdeasArray = []
 
 // functions:
 
@@ -53,11 +56,11 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
-  <img class="favorite-on hidden" src="assets/star-active.svg" alt="favorite on">
-  <img class="favorite-off" src="./assets/star.svg" alt="favorite off">
+  <img class="favorite-on hidden" src="assets/star-active.svg" alt="favorite on" data-type='favorite-button'>
+  <img class="favorite-off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
-  <button class='header-buttons'>
-  <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on">
+  <button class='header-buttonss'>
+  <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
   </button>
   </header>
   </div>
@@ -96,5 +99,13 @@ function deleteIdea(event) {
       ideaBoxArray.splice(i, 1)
     }
   }
-  displayIdeaCard()
+  displayIdeaCard()  
 }
+
+function saveIdea(event) {
+    if ('favorite-button' === event.target.dataset.type) {
+      savedIdeasArray.push(ideaBoxArray)
+    } savedIdeasArray
+    displayIdeaCard()
+    }
+

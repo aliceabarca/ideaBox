@@ -168,7 +168,8 @@ background-color: #1F1F3C;
   /* border: 2px #1f1f3c solid; */
 }
 
-.header-buttons {
+.header-buttons,
+.header-buttonss {
   padding: 0;
   border: none;
 }
