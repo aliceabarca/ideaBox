@@ -24,6 +24,8 @@ bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
 bottomBox.addEventListener('click', deleteIdea)
 bottomBox.addEventListener('click', saveIdea)
+bottomBox.addEventListener('click', handlesFavoriting)
+// bottomBox.addEventListener('click', removeIdea)
 
 
 
@@ -40,7 +42,7 @@ function captureIdea(title, body) {
     title: title,
     body: body,
     id: Date.now(),
-    isFavorite: "hidden"
+    isFavorite: false
   }
 }
 
@@ -96,17 +98,40 @@ function emptyInputs() {
     }
 }
 
+function handlesFavoriting(event, ideaId) {
+  var starElement = event.target.parentElement;
+  var isFavorite = starElement.classList.contains('off');
+
+  // if (isFavorite) {
+  //   // Remove from favorites
+  //   starElement.src = './assets/star.svg';
+  //   starElement.classList.remove('off');
+  //   deleteIdea(ideaId);
+  // } else if{
+    if (isFavorite){
+    // Add to favorites
+    starElement.isFavorite = true;
+    starElement.src = './assets/star-active.svg';
+    starElement.classList.add('on');
+    saveIdea(ideaId);
+    removeIdea(ideaId);
+  }
+}
+
 /*
   When I click on either 'star' or 'delete' img tag deleteIdea and saveIdea both log the event.
   How can you leverage the data-type so you only log it's respective function?
     - If I click on the 'star' img only 'saveIdea' should log
     - If I click on the 'delete' img only 'deleteIdea' should log
 */
+
 function deleteIdea(event) {
   console.log(event.target)
   for (i = 0; i < ideaBoxArray.length; i++) {
     if (ideaBoxArray[i].id === parseInt(event.target.id)) {
       ideaBoxArray.splice(i, 1)
+    } else {
+      handlesFavoriting()
     }
   }
   displayIdeaCard()
@@ -114,14 +139,20 @@ function deleteIdea(event) {
 
 // need a way to know which one we are adding
 // bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
-function saveIdea(event) {
-   currentIdea = cardContainer
-  console.log(event.target)
-  if ('favorite-button' === event.target.dataset.type) {
-    savedIdeasArray.push(ideaBoxArray)
-  }
-}
+// function saveIdea(event) {
+//    currentIdea = cardContainer
+//   console.log(event.target)
+//   if ('favorite-button' === event.target.dataset.type) {
+//     savedIdeasArray.push(ideaBoxArray)
+//   }
+// }
 
+// function saveIdea(event, ideaId) {
+//   if ('favorite-button' === event.target.dataset.type) {
+//     savedIdeasArray.push(ideaId);
+//   }
+//   console.log(ideaId)
+// }
 
 
 // function saveIdeatwo() {
@@ -129,6 +160,22 @@ function saveIdea(event) {
 //     if (ideaBoxArray[i].id) =
 //   }
 // }
+
+function removeIdea(ideaId) {
+  const index = ideaBoxArray.findIndex((idea) => idea.id === ideaId);
+  if (index !== -1) {
+    ideaBoxArray.splice(index, 1);
+  }
+}
+
+function saveIdea(ideaId) {
+  const idea = ideaBoxArray.find((idea) => idea.id === ideaId);
+  if (idea) {
+    savedIdeasArray.push(idea);
+  }
+  // handlesFavoriting();
+}
+
 
 /*
   Main Suggestion:
