@@ -63,7 +63,7 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
-  <img class="favorite-star off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
+  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
   <button class='header-buttonss'>
   <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
@@ -98,6 +98,47 @@ function emptyInputs() {
     }
 }
 
+
+function deleteIdea(event) {
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
+  // console.log(currentIdea)
+  // console.log(event.target)
+  for (i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
+      ideaBoxArray.splice(i, 1)
+    } else {
+      handlesFavoriting()
+    }
+  }
+  displayIdeaCard()
+}
+
+// need a way to know which one we are adding
+// bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
+function saveIdea(event) {
+  var card = event.target
+  // console.log(card)
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
+  var favorite = card.classList.contains('on')
+  // console.log(currentIdea)
+  // console.log(event.target.dataset.type)
+  if ('favorite-button' === event.target.dataset.type) {
+    for (var i = 0; i < ideaBoxArray.length; i++) {
+      if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
+        if (ideaBoxArray[i].isFavorite === false) {
+          ideaBoxArray[i].isFavorite = true
+          card.src = "./assets/star-active.svg"
+        } else if (ideaBoxArray[i].isFavorite === true) {
+          ideaBoxArray[i].isFavorite = false
+          card.src = "./assets/star.svg"
+        }
+      } 
+    }
+  }
+}
+
+
+
 function handlesFavoriting(event, ideaId) {
   var starElement = event.target
   currentIdea = event.target.parentElement.parentElement.parentElement
@@ -127,39 +168,13 @@ function handlesFavoriting(event, ideaId) {
     - If I click on the 'delete' img only 'deleteIdea' should log
 */
 
-function deleteIdea(event) {
-  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
-  // console.log(currentIdea)
-  // console.log(event.target)
-  for (i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
-      ideaBoxArray.splice(i, 1)
-    } else {
-      handlesFavoriting()
-    }
-  }
-  displayIdeaCard()
-}
+// function handleBBClicks() {
+//   if (event.targe === )
+// }
+// console.log(ideaBoxArray)
+// ideaBoxArray[i].isfavorite = false
+// card.src = "./assets/star.svg"
 
-// need a way to know which one we are adding
-// bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
-function saveIdea(event) {
-  var card = event.target
-  console.log(card)
-  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
-  console.log(currentIdea)
-  console.log(event.target.dataset.type)
-  if ('favorite-button' === event.target.dataset.type) {
-  for (var i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
-      ideaBoxArray[i].isFavorite = true;
-    } else {
-      
-    }
-    console.log(ideaBoxArray)
-  }
-  }
-}
 
 // function saveIdea(event, ideaId) {
 //   if ('favorite-button' === event.target.dataset.type) {
