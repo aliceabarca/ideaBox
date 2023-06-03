@@ -12,7 +12,7 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
-    margin-right: 0; 
+    margin-right: 0;
     width: 100%;
 }
 
@@ -95,7 +95,7 @@ header {
   width: 70%;
   height: 56px;
   margin-left: 75px;
-  
+
 }
 #input-1 {
   width: 75%;
@@ -124,8 +124,7 @@ header {
 }
 
 
-.favorite-on,
-.favorite-off,
+.favorite-star,
 .delete-button {
 width: 50px;
 background-color: #1F1F3C;
@@ -174,9 +173,9 @@ background-color: #1F1F3C;
   border: none;
 }
 
-#input-1, 
+#input-1,
 #input-2 {
-  
+
   /* width: 100%;
   padding: 12px 20px;
   margin: 8px 0; */
@@ -188,13 +187,13 @@ background-color: #1F1F3C;
 /* .input-2 {
   /* box-sizing: border-box;
   width: 75%; */
-  
-  
+
+
   /* .save-button{ */ */
 img {
   background-color: black;
 }
-    
+
 .hidden {
   display: none;
 }
@@ -203,8 +202,8 @@ img {
   cursor: not-allowed;
   transition-duration: 0.7s;
 }
-/* 
-puts this on the label    
+/*
+puts this on the label
 box-sizing: border-box;
 width: 75%; */
 

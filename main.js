@@ -57,8 +57,7 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
-  <img class="favorite-on hidden" src="assets/star-active.svg" alt="favorite on" data-type='favorite-button'>
-  <img class="favorite-off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
+  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
   <button class='header-buttonss'>
   <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
@@ -72,7 +71,7 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class="card-body-div">
   <strong>${ideaBoxArray[i].body}</strong>
   </div>
-  </div>  
+  </div>
   </div>
   `
 }
@@ -100,7 +99,7 @@ function deleteIdea(event) {
       ideaBoxArray.splice(i, 1)
     }
   }
-  displayIdeaCard()  
+  displayIdeaCard()
 }
 
 // need a way to know which one we are adding
@@ -108,15 +107,15 @@ function deleteIdea(event) {
 function saveIdea(event) {
    currentIdea = cardContainer
   console.log(event.target)
-  if ('favorite-button' === event.target.dataset.type) {  
+  if ('favorite-button' === event.target.dataset.type) {
     savedIdeasArray.push(ideaBoxArray)
-  } 
+  }
 }
 
 
 
 // function saveIdeatwo() {
 //   for (var i =0; i < ideaBoxArray.length; i++) {
-//     if (ideaBoxArray[i].id) = 
+//     if (ideaBoxArray[i].id) =
 //   }
 // }
