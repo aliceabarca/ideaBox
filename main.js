@@ -22,18 +22,13 @@ saveButton.addEventListener('click', function(event) {
 titleInput.addEventListener('input', emptyInputs)
 bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
-bottomBox.addEventListener('click', saveIdea)
-// bottomBox.addEventListener('click', saveIdea)
-// bottomBox.addEventListener('click', handlesFavoriting)
-// bottomBox.addEventListener('click', removeIdea)
-
+bottomBox.addEventListener('click', bottomBoxClick)
 
 
 
 // global variables:
 var currentIdea
 var ideaBoxArray = []
-// var savedIdeasArray = []
 
 // functions:
 
@@ -54,10 +49,6 @@ ideaBoxArray.push(currentIdea)
 function displayIdeaCard() {
 cardContainer.innerHTML = ''
 for (var i = 0; i < ideaBoxArray.length; i++) {
-  /*
-    Indent all this HTML so it's easier to read
-    Also, you don't need two img tags for the favorite star use JS to replace the img src
-  */
   cardContainer.innerHTML += `
   <div class='idea-cards' id=${ideaBoxArray[i].id}>
   <div class='card-header-main'>
@@ -101,27 +92,17 @@ function emptyInputs() {
 
 function deleteIdea(event) {
   currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
-  // console.log(currentIdea)
-  // console.log(event.target)
   for (i = 0; i < ideaBoxArray.length; i++) {
     if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
       ideaBoxArray.splice(i, 1)
-    } else {
-      handlesFavoriting()
     }
   }
   displayIdeaCard()
 }
 
-// need a way to know which one we are adding
-// bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
 function saveIdea(event) {
   var card = event.target
-  // console.log(card)
   currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
-  var favorite = card.classList.contains('on')
-  // console.log(currentIdea)
-  // console.log(event.target.dataset.type)
   if ('favorite-button' === event.target.dataset.type) {
     for (var i = 0; i < ideaBoxArray.length; i++) {
       if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
@@ -137,76 +118,11 @@ function saveIdea(event) {
   }
 }
 
-
-
-function handlesFavoriting(event, ideaId) {
-  var starElement = event.target
-  currentIdea = event.target.parentElement.parentElement.parentElement
-  // console.log(event.target.parentElement.parentElement.parentElement.parentElement)
-  var isFavorite = starElement.classList.contains('off');
-
-  // if (isFavorite) {
-  //   // Remove from favorites
-  //   starElement.src = './assets/star.svg';
-  //   starElement.classList.remove('off');
-  //   deleteIdea(ideaId);
-  // } else if{
-    if (isFavorite){
-    // Add to favorites
-    starElement.isFavorite = true;
-    starElement.src = './assets/star-active.svg';
-    starElement.classList.add('on');
-    saveIdea();
-    deleteIdea(currentIdea);
+function bottomBoxClick(event) {
+  if ('favorite-button' === event.target.dataset.type) {
+    saveIdea(event)
+  } else if ('del-button' === event.target.dataset.type) {
+    deleteIdea(event)
   }
+
 }
-
-/*
-  When I click on either 'star' or 'delete' img tag deleteIdea and saveIdea both log the event.
-  How can you leverage the data-type so you only log it's respective function?
-    - If I click on the 'star' img only 'saveIdea' should log
-    - If I click on the 'delete' img only 'deleteIdea' should log
-*/
-
-// function handleBBClicks() {
-//   if (event.targe === )
-// }
-// console.log(ideaBoxArray)
-// ideaBoxArray[i].isfavorite = false
-// card.src = "./assets/star.svg"
-
-
-// function saveIdea(event, ideaId) {
-//   if ('favorite-button' === event.target.dataset.type) {
-//     savedIdeasArray.push(ideaId);
-//   }
-//   console.log(ideaId)
-// }
-
-
-// function saveIdeatwo() {
-//   for (var i =0; i < ideaBoxArray.length; i++) {
-//     if (ideaBoxArray[i].id) =
-//   }
-// }
-
-
-/*
-  Main Suggestion:
-  For favoriting a card/star, have a function that 'handlesFavoriting'
-    - When favoriting
-      - if your class name is 'favorite-star' and 'off'
-        - update the image src to the active star
-        - set the class name to 'on'
-        - invoke a function that will 'saveIdea' to your 'savedIdeasArray'
-          - will need to pass the idea id to this function
-      - if your class name is 'favorite-star' and 'on'
-        - update the image src to the regular star
-        - set the class name to 'off'
-        - invoke a function that will 'removeIdea' from 'savedIdeasArray'
-          - will need to pass the idea id to this function
-
-    - HINT: Look at how you're setting the id on the delete img tag to pass your 'save/removeIdea' function
-
-    These are suggestions - you peeps know your code best ^.^
-*/
