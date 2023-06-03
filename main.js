@@ -22,9 +22,9 @@ saveButton.addEventListener('click', function(event) {
 titleInput.addEventListener('input', emptyInputs)
 bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
-bottomBox.addEventListener('click', deleteIdea)
 bottomBox.addEventListener('click', saveIdea)
-bottomBox.addEventListener('click', handlesFavoriting)
+// bottomBox.addEventListener('click', saveIdea)
+// bottomBox.addEventListener('click', handlesFavoriting)
 // bottomBox.addEventListener('click', removeIdea)
 
 
@@ -33,7 +33,7 @@ bottomBox.addEventListener('click', handlesFavoriting)
 // global variables:
 var currentIdea
 var ideaBoxArray = []
-var savedIdeasArray = []
+// var savedIdeasArray = []
 
 // functions:
 
@@ -59,14 +59,14 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
     Also, you don't need two img tags for the favorite star use JS to replace the img src
   */
   cardContainer.innerHTML += `
-  <div class='idea-cards'>
+  <div class='idea-cards' id=${ideaBoxArray[i].id}>
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
   <img class="favorite-star off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
   <button class='header-buttonss'>
-  <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
+  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
   </button>
   </header>
   </div>
@@ -99,7 +99,9 @@ function emptyInputs() {
 }
 
 function handlesFavoriting(event, ideaId) {
-  var starElement = event.target.parentElement;
+  var starElement = event.target
+  currentIdea = event.target.parentElement.parentElement.parentElement
+  // console.log(event.target.parentElement.parentElement.parentElement.parentElement)
   var isFavorite = starElement.classList.contains('off');
 
   // if (isFavorite) {
@@ -113,8 +115,8 @@ function handlesFavoriting(event, ideaId) {
     starElement.isFavorite = true;
     starElement.src = './assets/star-active.svg';
     starElement.classList.add('on');
-    saveIdea(ideaId);
-    removeIdea(ideaId);
+    saveIdea();
+    deleteIdea(currentIdea);
   }
 }
 
@@ -126,9 +128,11 @@ function handlesFavoriting(event, ideaId) {
 */
 
 function deleteIdea(event) {
-  console.log(event.target)
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
+  // console.log(currentIdea)
+  // console.log(event.target)
   for (i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === parseInt(event.target.id)) {
+    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
       ideaBoxArray.splice(i, 1)
     } else {
       handlesFavoriting()
@@ -139,13 +143,23 @@ function deleteIdea(event) {
 
 // need a way to know which one we are adding
 // bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
-// function saveIdea(event) {
-//    currentIdea = cardContainer
-//   console.log(event.target)
-//   if ('favorite-button' === event.target.dataset.type) {
-//     savedIdeasArray.push(ideaBoxArray)
-//   }
-// }
+function saveIdea(event) {
+  var card = event.target
+  console.log(card)
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
+  console.log(currentIdea)
+  console.log(event.target.dataset.type)
+  if ('favorite-button' === event.target.dataset.type) {
+  for (var i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
+      ideaBoxArray[i].isFavorite = true;
+    } else {
+      
+    }
+    console.log(ideaBoxArray)
+  }
+  }
+}
 
 // function saveIdea(event, ideaId) {
 //   if ('favorite-button' === event.target.dataset.type) {
@@ -160,21 +174,6 @@ function deleteIdea(event) {
 //     if (ideaBoxArray[i].id) =
 //   }
 // }
-
-function removeIdea(ideaId) {
-  const index = ideaBoxArray.findIndex((idea) => idea.id === ideaId);
-  if (index !== -1) {
-    ideaBoxArray.splice(index, 1);
-  }
-}
-
-function saveIdea(ideaId) {
-  const idea = ideaBoxArray.find((idea) => idea.id === ideaId);
-  if (idea) {
-    savedIdeasArray.push(idea);
-  }
-  // handlesFavoriting();
-}
 
 
 /*
