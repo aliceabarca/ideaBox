@@ -83,7 +83,6 @@ aside {
 	width: 1100px;
 	height: 42%;
 	background-color: #EAEAF4;
-  overflow: auto;
 }
 
 .card-container {
@@ -94,12 +93,10 @@ aside {
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
-    grid-gap: 20px;
-    padding: 20px;
-    overflow-y: scroll;
-    flex-wrap: wrap;
+  grid-gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  flex-wrap: wrap;
 }
 
 .input-1,
@@ -173,9 +170,9 @@ aside {
 .card-title {
 	display: flex;
 	justify-content: center;
-	font-size: 30px;
+	font-size: 15px;
 	font-weight: lighter;
-	padding-top: 20px;
+  height: 40px;
 }
 
 .card-body-div {
@@ -183,10 +180,12 @@ aside {
 	flex-direction: column;
 	align-items: center;
 	height: 210px;
-	padding-top: 20px;
-  overflow-y: scroll;
-  height: 37%;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  height: 211px;
   text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .header-buttons,

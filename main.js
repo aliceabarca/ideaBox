@@ -1,4 +1,4 @@
-// query selectors:
+//---------- Query Selectors -----------//
 
 var saveButton = document.querySelector('.save-button');
 var titleInput = document.querySelector('#input-1');
@@ -10,12 +10,12 @@ var inputForm = document.querySelector('.input-form');
 var showFavsButton = document.querySelector('.show-starred')
 var showAllButton = document.querySelector('.show-all')
 
-// global variables:
+//----------- Global Variables ---------//
 
 var currentIdea
 var ideaBoxArray = []
 
-// event listener:
+//----------- Event Listeners ---------//
 
 saveButton.addEventListener('click', function(event) {
   event.preventDefault();
@@ -38,7 +38,7 @@ showAllButton.addEventListener('click', function() {
   toggleClassList(showFavsButton, showAllButton)
 })
 
-// functions:
+//----------- Functions ---------//
 
 function toggleClassList(bts, bth) {
   bts.classList.remove('hidden')
@@ -77,10 +77,10 @@ function updateCardContainer(array) {
           </div>
           <div class='card-body'>
             <div class="card-title">
-              <strong>${array[i].title}</strong>
+            <h2>${array[i].title}</h2>
             </div>
             <div class="card-body-div">
-              <strong>${array[i].body}</strong>
+            <p>${array[i].body}</p>
             </div>
           </div>
         </div>
