@@ -76,16 +76,22 @@ aside {
 .bottom-box {
 	width: 1100px;
 	height: 50%;
-	background-color: aliceblue;
+	background-color: #EAEAF4;
 }
 
 .card-container {
 	background-color: #EAEAF4;
 	height: 100%;
+  padding-left: 52px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    overflow-y: scroll;
 }
 
 .input-1,
@@ -170,6 +176,9 @@ aside {
 	align-items: center;
 	height: 210px;
 	padding-top: 20px;
+  overflow-y: scroll;
+  height: 37%;
+  text-align: center;
 }
 
 .header-buttons,
