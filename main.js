@@ -82,7 +82,7 @@ function updateCardContainer(array) {
             <div class="card-body-div">
               <strong>${array[i].body}</strong>
             </div>
-         </div>
+          </div>
         </div>
       `
     } else {
