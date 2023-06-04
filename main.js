@@ -9,6 +9,9 @@ var bottomBox = document.querySelector('.bottom-box')
 var inputForm = document.querySelector('.input-form');
 
 
+//testing
+var showFavs = document.querySelector('#show-starred-button')
+
 // event listener:
 
 saveButton.addEventListener('click', function(event) {
@@ -23,6 +26,7 @@ titleInput.addEventListener('input', emptyInputs)
 bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
 bottomBox.addEventListener('click', bottomBoxClick)
+showFavs.addEventListener('click', showFavorites)
 
 
 
@@ -125,4 +129,47 @@ function bottomBoxClick(event) {
     deleteIdea(event)
   }
 
+}
+
+// on click
+  // loop through our ideasboxarray
+    // isfavorite = true
+      //if so, run our display ideaCardsfunction
+
+function displayClickedArray() {
+
+}
+
+function showFavorites() {
+  showArray = []
+  cardContainer.innerHTML = ''
+  for (var i = 0; i < ideaBoxArray.length; i++) {
+    if (ideaBoxArray[i].isFavorite === true) {
+      showArray.push(ideaBoxArray[i])
+    }
+  }
+  for (var i = 0; i < showArray.length; i++) {
+  cardContainer.innerHTML += `
+  <div class='idea-cards' id=${showArray[i].id}>
+  <div class='card-header-main'>
+  <header class='card-header'>
+  <button class='header-buttons'>
+  <img class="favorite-star" src="./assets/star-active.svg" alt="favorite off" data-type='favorite-button'>
+  </button>
+  <button class='header-buttonss'>
+  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
+  </button>
+  </header>
+  </div>
+  <div class='card-body'>
+  <div class="card-title">
+  <strong>${showArray[i].title}</strong>
+  </div>
+  <div class="card-body-div">
+  <strong>${showArray[i].body}</strong>
+  </div>
+  </div>
+  </div>
+  `
+}
 }
