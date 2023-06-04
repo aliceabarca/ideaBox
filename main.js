@@ -11,7 +11,7 @@ var inputForm = document.querySelector('.input-form');
 
 //testing
 var showFavs = document.querySelector('#show-starred-button')
-var showAll = document.querySelector('#show-saved')
+var showAll = document.querySelector('#show-all')
 
 // event listener:
 
