@@ -22,16 +22,13 @@ saveButton.addEventListener('click', function(event) {
 titleInput.addEventListener('input', emptyInputs)
 bodyInput.addEventListener('input', emptyInputs);
 inputForm.addEventListener('submit', emptyInputs)
-bottomBox.addEventListener('click', deleteIdea)
-bottomBox.addEventListener('click', saveIdea)
-
+bottomBox.addEventListener('click', bottomBoxClick)
 
 
 
 // global variables:
 var currentIdea
 var ideaBoxArray = []
-var savedIdeasArray = []
 
 // functions:
 
@@ -40,7 +37,7 @@ function captureIdea(title, body) {
     title: title,
     body: body,
     id: Date.now(),
-    isFavorite: "hidden"
+    isFavorite: false
   }
 }
 
@@ -53,15 +50,14 @@ function displayIdeaCard() {
 cardContainer.innerHTML = ''
 for (var i = 0; i < ideaBoxArray.length; i++) {
   cardContainer.innerHTML += `
-  <div class='idea-cards'>
+  <div class='idea-cards' id=${ideaBoxArray[i].id}>
   <div class='card-header-main'>
   <header class='card-header'>
   <button class='header-buttons'>
-  <img class="favorite-on hidden" src="assets/star-active.svg" alt="favorite on" data-type='favorite-button'>
-  <img class="favorite-off" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
+  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
   </button>
   <button class='header-buttonss'>
-  <img class="delete-button" id=${ideaBoxArray[i].id} src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
+  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
   </button>
   </header>
   </div>
@@ -72,7 +68,7 @@ for (var i = 0; i < ideaBoxArray.length; i++) {
   <div class="card-body-div">
   <strong>${ideaBoxArray[i].body}</strong>
   </div>
-  </div>  
+  </div>
   </div>
   `
 }
@@ -93,30 +89,40 @@ function emptyInputs() {
     }
 }
 
+
 function deleteIdea(event) {
-  console.log(event.target)
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
   for (i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].id === parseInt(event.target.id)) {
+    if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
       ideaBoxArray.splice(i, 1)
     }
   }
-  displayIdeaCard()  
+  displayIdeaCard()
 }
 
-// need a way to know which one we are adding
-// bc rn if 3 are on the page it adds all 3 (bc it adds the entire array)
 function saveIdea(event) {
-   currentIdea = cardContainer
-  console.log(event.target)
-  if ('favorite-button' === event.target.dataset.type) {  
-    savedIdeasArray.push(ideaBoxArray)
-  } 
+  var card = event.target
+  currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
+  if ('favorite-button' === event.target.dataset.type) {
+    for (var i = 0; i < ideaBoxArray.length; i++) {
+      if (ideaBoxArray[i].id === parseInt(currentIdea.id)) {
+        if (ideaBoxArray[i].isFavorite === false) {
+          ideaBoxArray[i].isFavorite = true
+          card.src = "./assets/star-active.svg"
+        } else if (ideaBoxArray[i].isFavorite === true) {
+          ideaBoxArray[i].isFavorite = false
+          card.src = "./assets/star.svg"
+        }
+      } 
+    }
+  }
 }
 
+function bottomBoxClick(event) {
+  if ('favorite-button' === event.target.dataset.type) {
+    saveIdea(event)
+  } else if ('del-button' === event.target.dataset.type) {
+    deleteIdea(event)
+  }
 
-
-// function saveIdeatwo() {
-//   for (var i =0; i < ideaBoxArray.length; i++) {
-//     if (ideaBoxArray[i].id) = 
-//   }
-// }
+}

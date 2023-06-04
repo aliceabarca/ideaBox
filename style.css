@@ -3,16 +3,13 @@
 }
 
 body {
-    /* border: 1px solid blue;
-    border-left: 20px solid black;
-    border-right: 20px solid black; */
     display: flex;
     color: #1F1F3C;
     background-color:#EAEAF4;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
-    margin-right: 0; 
+    margin-right: 0;
     width: 100%;
 }
 
@@ -20,7 +17,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* background-color:#A8AAD2 ; */
 }
 
 .input-form {
@@ -53,16 +49,12 @@ header {
 .top-box {
   width: 1100px;
   height: 50%;
-  /* padding-right: 50%;
-  padding-left: 50%; */
   background-color: #A8AAD2;
 }
 
 .bottom-box {
   width: 1100px;
   height: 50%;
-  /* padding-right: 50%;
-  padding-left: 50%; */
   background-color:aliceblue;
 }
 
@@ -95,7 +87,7 @@ header {
   width: 70%;
   height: 56px;
   margin-left: 75px;
-  
+
 }
 #input-1 {
   width: 75%;
@@ -124,12 +116,10 @@ header {
 }
 
 
-.favorite-on,
-.favorite-off,
+.favorite-star,
 .delete-button {
 width: 50px;
 background-color: #1F1F3C;
-/* height: 100px; */
 }
 
 .idea-cards {
@@ -138,17 +128,11 @@ background-color: #1F1F3C;
   height: 325px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
 .card-body
 .card-body-div {
-  /* border: 1px solid black; */
   width: 100%;
-  /* display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: column; */
 }
 
 .card-title {
@@ -165,7 +149,6 @@ background-color: #1F1F3C;
   align-items: center;
   height: 210px;
   padding-top: 20px;
-  /* border: 2px #1f1f3c solid; */
 }
 
 .header-buttons,
@@ -174,27 +157,10 @@ background-color: #1F1F3C;
   border: none;
 }
 
-#input-1, 
-#input-2 {
-  
-  /* width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0; */
-  /* box-sizing: border-box; */
-  /* padding: 14px 165px;
-  margin: 8px 0;
-  box-sizing: border-box; */
-}
-/* .input-2 {
-  /* box-sizing: border-box;
-  width: 75%; */
-  
-  
-  /* .save-button{ */ */
 img {
   background-color: black;
 }
-    
+
 .hidden {
   display: none;
 }
@@ -203,19 +169,3 @@ img {
   cursor: not-allowed;
   transition-duration: 0.7s;
 }
-/* 
-puts this on the label    
-box-sizing: border-box;
-width: 75%; */
-
-
-/* * {
-    border: 1px solid red;
-} */
-
-/* .saved-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
-} */
