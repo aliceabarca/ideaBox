@@ -7,36 +7,43 @@ var cardContainer = document.querySelector('.card-container');
 var topBox = document.querySelector('.top-box');
 var bottomBox = document.querySelector('.bottom-box')
 var inputForm = document.querySelector('.input-form');
+var showFavsButton = document.querySelector('.show-starred')
+var showAllButton = document.querySelector('.show-all')
 
+// global variables:
 
-//testing
-var showFavs = document.querySelector('#show-starred-button')
-var showAll = document.querySelector('#show-all')
+var currentIdea
+var ideaBoxArray = []
 
 // event listener:
 
 saveButton.addEventListener('click', function(event) {
   event.preventDefault();
   createIdeaObject(titleInput.value, bodyInput.value)
-  displayIdeaCard()
-  emptyInputs()
+  renderBottomBox('allCards')
+  eraseInputs()
 }
 );
 
-titleInput.addEventListener('input', emptyInputs)
-bodyInput.addEventListener('input', emptyInputs);
-inputForm.addEventListener('submit', emptyInputs)
+titleInput.addEventListener('input', disableSavedButton)
+bodyInput.addEventListener('input', disableSavedButton);
+inputForm.addEventListener('submit', disableSavedButton)
 bottomBox.addEventListener('click', bottomBoxClick)
-showFavs.addEventListener('click', showFavoritedIdeas)
-showAll.addEventListener('click', showAllIdeas)
-
-
-
-// global variables:
-var currentIdea
-var ideaBoxArray = []
+showFavsButton.addEventListener('click', function() {
+  renderBottomBox('favCards')
+  toggleClassList(showAllButton, showFavsButton)
+})
+showAllButton.addEventListener('click', function() {
+  renderBottomBox('allCards')
+  toggleClassList(showFavsButton, showAllButton)
+})
 
 // functions:
+
+function toggleClassList(bts, bth) {
+  bts.classList.remove('hidden')
+  bth.classList.add('hidden')
+}
 
 function captureIdea(title, body) {
   return {
@@ -48,44 +55,85 @@ function captureIdea(title, body) {
 }
 
 function createIdeaObject(title, body) {
-currentIdea = captureIdea(title, body)
-ideaBoxArray.push(currentIdea)
+  currentIdea = captureIdea(title, body)
+  ideaBoxArray.push(currentIdea)
 }
 
-function displayIdeaCard() {
-cardContainer.innerHTML = ''
-for (var i = 0; i < ideaBoxArray.length; i++) {
-  cardContainer.innerHTML += `
-  <div class='idea-cards' id=${ideaBoxArray[i].id}>
-  <div class='card-header-main'>
-  <header class='card-header'>
-  <button class='header-buttons'>
-  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
-  </button>
-  <button class='header-buttonss'>
-  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
-  </button>
-  </header>
-  </div>
-  <div class='card-body'>
-  <div class="card-title">
-  <strong>${ideaBoxArray[i].title}</strong>
-  </div>
-  <div class="card-body-div">
-  <strong>${ideaBoxArray[i].body}</strong>
-  </div>
-  </div>
-  </div>
-  `
+function updateCardContainer(array) {
+  cardContainer.innerHTML = ''
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].isFavorite === false) {
+      cardContainer.innerHTML += `
+        <div class='idea-cards' id=${array[i].id}>
+          <div class='card-header-main'>
+            <header class='card-header'>
+              <button class='header-buttons'>
+                <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
+              </button>
+              <button class='header-buttonss'>
+                <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
+              </button>
+            </header>
+          </div>
+          <div class='card-body'>
+            <div class="card-title">
+              <strong>${array[i].title}</strong>
+            </div>
+            <div class="card-body-div">
+              <strong>${array[i].body}</strong>
+            </div>
+         </div>
+        </div>
+      `
+    } else {
+      cardContainer.innerHTML += `
+        <div class='idea-cards' id=${array[i].id}>
+          <div class='card-header-main'>
+            <header class='card-header'>
+              <button class='header-buttons'>
+                <img class="favorite-star" src="./assets/star-active.svg" alt="favorite off" data-type='favorite-button'>
+              </button>
+              <button class='header-buttonss'>
+                <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
+              </button>
+            </header>
+          </div>
+          <div class='card-body'>
+            <div class="card-title">
+              <strong>${array[i].title}</strong>
+            </div>
+            <div class="card-body-div">
+              <strong>${array[i].body}</strong>
+            </div>
+          </div>
+        </div>
+      `
+    }  
+  }
 }
+
+function renderBottomBox(whichPage) {
+  if (whichPage === 'allCards') {
+    updateCardContainer(ideaBoxArray)
+  } else if (whichPage === 'favCards') {
+    var showArray = []
+    for (var i = 0; i < ideaBoxArray.length; i++) {
+      if (ideaBoxArray[i].isFavorite === true) {
+        showArray.push(ideaBoxArray[i])
+      }
+    } 
+    updateCardContainer(showArray)
+  }
+}
+
+function eraseInputs() {
   titleInput.value = ''
   bodyInput.value = ''
-  emptyInputs()
-  return currentIdea
+  disableSavedButton()
 }
 
 saveButton.disabled = true;
-function emptyInputs() {
+function disableSavedButton() {
     if (titleInput.value !== '' && bodyInput.value !== '') {
       saveButton.disabled = false;
       saveButton.classList.remove('disabled');
@@ -95,7 +143,6 @@ function emptyInputs() {
     }
 }
 
-
 function deleteIdea(event) {
   currentIdea = event.target.parentElement.parentElement.parentElement.parentElement
   for (i = 0; i < ideaBoxArray.length; i++) {
@@ -103,7 +150,7 @@ function deleteIdea(event) {
       ideaBoxArray.splice(i, 1)
     }
   }
-  displayIdeaCard()
+  renderBottomBox('allCards')
 }
 
 function saveIdea(event) {
@@ -130,76 +177,4 @@ function bottomBoxClick(event) {
   } else if ('del-button' === event.target.dataset.type) {
     deleteIdea(event)
   }
-
-}
-
-// on click
-  // loop through our ideasboxarray
-    // isfavorite = true
-      //if so, run our display ideaCardsfunction
-
-function displayClickedArray() {
-
-}
-
-function showFavoritedIdeas() {
-  showArray = []
-  cardContainer.innerHTML = ''
-  for (var i = 0; i < ideaBoxArray.length; i++) {
-    if (ideaBoxArray[i].isFavorite === true) {
-      showArray.push(ideaBoxArray[i])
-    }
-  }
-  for (var i = 0; i < showArray.length; i++) {
-  cardContainer.innerHTML += `
-  <div class='idea-cards' id=${showArray[i].id}>
-  <div class='card-header-main'>
-  <header class='card-header'>
-  <button class='header-buttons'>
-  <img class="favorite-star" src="./assets/star-active.svg" alt="favorite off" data-type='favorite-button'>
-  </button>
-  <button class='header-buttonss'>
-  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
-  </button>
-  </header>
-  </div>
-  <div class='card-body'>
-  <div class="card-title">
-  <strong>${showArray[i].title}</strong>
-  </div>
-  <div class="card-body-div">
-  <strong>${showArray[i].body}</strong>
-  </div>
-  </div>
-  </div>
-  `
-}
-}
-
-function showAllIdeas() {
-  cardContainer.innerHTML = ''
-for (var i = 0; i < ideaBoxArray.length; i++) {
-  cardContainer.innerHTML += `
-  <div class='idea-cards' id=${ideaBoxArray[i].id}>
-  <div class='card-header-main'>
-  <header class='card-header'>
-  <button class='header-buttons'>
-  <img class="favorite-star" src="./assets/star.svg" alt="favorite off" data-type='favorite-button'>
-  </button>
-  <button class='header-buttonss'>
-  <img class="delete-button" src="./assets/delete.svg" alt="favorite on" data-type='del-button'>
-  </button>
-  </header>
-  </div>
-  <div class='card-body'>
-  <div class="card-title">
-  <strong>${ideaBoxArray[i].title}</strong>
-  </div>
-  <div class="card-body-div">
-  <strong>${ideaBoxArray[i].body}</strong>
-  </div>
-  </div>
-  </div>
-  `
-}
 }
