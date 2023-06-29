@@ -14,13 +14,18 @@ var showAllButton = document.querySelector('.show-all')
 
 var currentIdea
 var ideaBoxArray = []
+var currentPage = 'allCards'
 
 //----------- Event Listeners ---------//
 
 saveButton.addEventListener('click', function(event) {
   event.preventDefault();
   createIdeaObject(titleInput.value, bodyInput.value)
-  renderBottomBox('allCards')
+  if (currentPage === "allCards") {
+    renderBottomBox('allCards')
+  } else {
+    renderBottomBox['favCards']
+  }
   eraseInputs()
 }
 );
@@ -112,17 +117,28 @@ function updateCardContainer(array) {
   }
 }
 
+// function renderBottomBox(whichPage) {
+//   if (whichPage === 'allCards') {
+//     updateCardContainer(ideaBoxArray)
+//   } else if (whichPage === 'favCards') {
+//     var showArray = []
+//     for (var i = 0; i < ideaBoxArray.length; i++) {
+//       if (ideaBoxArray[i].isFavorite === true) {
+//         showArray.push(ideaBoxArray[i])
+//       }
+//     } 
+//     updateCardContainer(showArray)
+//   }
+// }
+
 function renderBottomBox(whichPage) {
   if (whichPage === 'allCards') {
-    updateCardContainer(ideaBoxArray)
+    currentPage = 'allCards'
+    updateCardContainer(ideaBoxArray);
   } else if (whichPage === 'favCards') {
-    var showArray = []
-    for (var i = 0; i < ideaBoxArray.length; i++) {
-      if (ideaBoxArray[i].isFavorite === true) {
-        showArray.push(ideaBoxArray[i])
-      }
-    } 
-    updateCardContainer(showArray)
+    const showArray = ideaBoxArray.filter(idea => idea.isFavorite);
+    currentPage = 'favCards'
+    updateCardContainer(showArray);
   }
 }
 
